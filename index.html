@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContentAnalyst - پلتفرم هوشمند مدیریت و انتشار محتوا</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 20px 0;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 40px 20px;
+        }
+        
+        .hero-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .subtitle {
+            font-size: 22px;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+            text-align: right;
+        }
+        
+        .feature {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .feature h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .feature p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .cta-section {
+            margin-top: 50px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        .email-form {
+            display: flex;
+            gap: 10px;
+            max-width: 500px;
+            margin: 30px auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .email-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 16px;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+        
+        .email-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .submit-btn {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .launch-info {
+            font-size: 16px;
+            color: #666;
+            margin-top: 20px;
+        }
+        
+        .countdown-section {
+            margin: 40px 0;
+        }
+        
+        .countdown-circular {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-circle-item {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+        
+        .countdown-svg {
+            transform: rotate(-90deg);
+        }
+        
+        .countdown-bg {
+            fill: none;
+            stroke: #e0e0e0;
+            stroke-width: 8;
+        }
+        
+        .countdown-progress {
+            fill: none;
+            stroke: url(#gradient);
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-dasharray: 339.292;
+            stroke-dashoffset: 0;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+        
+        .countdown-circle-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        
+        .countdown-value {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        
+        .countdown-label {
+            font-size: 12px;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .success-message {
+            display: none;
+            background: #4caf50;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .shape:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            animation-delay: 0s;
+        }
+        
+        .shape:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation-delay: 2s;
+        }
+        
+        .shape:nth-child(3) {
+            bottom: 10%;
+            left: 20%;
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(180deg);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+            
+            .subtitle {
+                font-size: 18px;
+            }
+            
+            .hero-content {
+                padding: 40px 25px;
+            }
+            
+            .email-form {
+                flex-direction: column;
+            }
+            
+            .email-input {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <svg width="0" height="0">
+        <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+    </svg>
+    
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
+    <header>
+        <div class="container">
+            <div class="logo">ContentAnalyst.ir</div>
+        </div>
+    </header>
+    
+    <main class="hero">
+        <div class="hero-content">
+            <h1>پلتفرم هوشمند مدیریت و انتشار محتوا</h1>
+            <p class="subtitle">محتوای خود را با قدرت هوش مصنوعی تحلیل، بهینه‌سازی و در زمان مناسب در شبکه‌های اجتماعی منتشر کنید</p>
+            
+            <div class="countdown-section">
+                <h3 style="font-size: 20px; color: #555; margin-bottom: 30px;">⏳ زمان باقی‌مانده تا راه‌اندازی</h3>
+                <div class="countdown-circular">
+                    <div class="countdown-circle-item">
+                        <svg class="countdown-svg" width="120" height="120">
+                            <circle class="countdown-bg" cx="60" cy="60" r="54"></circle>
+                            <circle class="countdown-progress" id="seconds-circle" cx="60" cy="60" r="54"></circle>
+                        </svg>
+                        <div class="countdown-circle-content">
+                            <div class="countdown-value" id="seconds">00</div>
+                            <div class="countdown-label">ثانیه</div>
+                        </div>
+                    </div>
+                    <div class="countdown-circle-item">
+                        <svg class="countdown-svg" width="120" height="120">
+                            <circle class="countdown-bg" cx="60" cy="60" r="54"></circle>
+                            <circle class="countdown-progress" id="minutes-circle" cx="60" cy="60" r="54"></circle>
+                        </svg>
+                        <div class="countdown-circle-content">
+                            <div class="countdown-value" id="minutes">00</div>
+                            <div class="countdown-label">دقیقه</div>
+                        </div>
+                    </div>
+                    <div class="countdown-circle-item">
+                        <svg class="countdown-svg" width="120" height="120">
+                            <circle class="countdown-bg" cx="60" cy="60" r="54"></circle>
+                            <circle class="countdown-progress" id="hours-circle" cx="60" cy="60" r="54"></circle>
+                        </svg>
+                        <div class="countdown-circle-content">
+                            <div class="countdown-value" id="hours">00</div>
+                            <div class="countdown-label">ساعت</div>
+                        </div>
+                    </div>
+                    <div class="countdown-circle-item">
+                        <svg class="countdown-svg" width="120" height="120">
+                            <circle class="countdown-bg" cx="60" cy="60" r="54"></circle>
+                            <circle class="countdown-progress" id="days-circle" cx="60" cy="60" r="54"></circle>
+                        </svg>
+                        <div class="countdown-circle-content">
+                            <div class="countdown-value" id="days">00</div>
+                            <div class="countdown-label">روز</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🤖</div>
+                    <h3>پردازش هوشمند</h3>
+                    <p>تحلیل و بهینه‌سازی محتوا با AI</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <h3>انتشار چندکاناله</h3>
+                    <p>ارسال به شبکه‌های اجتماعی و وبلاگ</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⏰</div>
+                    <h3>زمان‌بندی هوشمند</h3>
+                    <p>برنامه‌ریزی و انتشار خودکار</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>جمع‌آوری محتوا</h3>
+                    <p>استخراج محتوا از منابع آنلاین</p>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <div class="status-badge">🚧 در حال ساخت</div>
+                
+                <p style="font-size: 18px; color: #555; margin-bottom: 20px;">
+                    برای اطلاع از زمان راه‌اندازی، ایمیل خود را وارد کنید
+                </p>
+                
+                <form class="email-form" id="emailForm">
+                    <input 
+                        type="email" 
+                        class="email-input" 
+                        placeholder="ایمیل شما"
+                        required
+                        id="emailInput"
+                    >
+                    <button type="submit" class="submit-btn">من منتظرم!</button>
+                </form>
+                
+                <div class="success-message" id="successMessage">
+                    ✅ با تشکر! شما را در زمان راه‌اندازی مطلع خواهیم کرد
+                </div>
+                
+                
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        const form = document.getElementById('emailForm');
+        const emailInput = document.getElementById('emailInput');
+        const successMessage = document.getElementById('successMessage');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = emailInput.value;
+            
+            // ذخیره ایمیل (در حال حاضر فقط در متغیر - در نسخه واقعی به سرور ارسال می‌شود)
+            console.log('Email submitted:', email);
+            
+            // نمایش پیام موفقیت
+            successMessage.style.display = 'block';
+            emailInput.value = '';
+            
+            // مخفی کردن پیام بعد از 5 ثانیه
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+        });
+        
+        // شمارنده معکوس - تاریخ راه‌اندازی: 1 فروردین 1405 (22 مارس 2026)
+        const launchDate = new Date('2026-04-03T00:00:00').getTime();
+        
+        // محاسبه کل روزها تا راه‌اندازی (برای درصد دایره)
+        const startDate = new Date('2025-01-02T00:00:00').getTime();
+        const totalDuration = launchDate - startDate;
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+            
+            if (distance < 0) {
+                document.querySelector('.countdown-section').innerHTML = '<h3 style="font-size: 24px; color: #4caf50;">🎉 پلتفرم راه‌اندازی شده است!</h3>';
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            
+            // محاسبه درصد برای دایره‌ها
+            const circumference = 2 * Math.PI * 54;
+            
+            // دایره روزها - بر اساس کل دوره پروژه
+            const totalDays = Math.floor(totalDuration / (1000 * 60 * 60 * 24));
+            const daysPercent = days / 90;
+            const daysOffset = circumference * (1 - daysPercent);
+            document.getElementById('days-circle').style.strokeDashoffset = daysOffset;
+            
+            // دایره ساعت‌ها (از 24)
+            const hoursPercent = hours / 24;
+            const hoursOffset = circumference * (1 - hoursPercent);
+            document.getElementById('hours-circle').style.strokeDashoffset = hoursOffset;
+            
+            // دایره دقیقه‌ها (از 60)
+            const minutesPercent = minutes / 60;
+            const minutesOffset = circumference * (1 - minutesPercent);
+            document.getElementById('minutes-circle').style.strokeDashoffset = minutesOffset;
+            
+            // دایره ثانیه‌ها (از 60)
+            const secondsPercent = seconds / 60;
+            const secondsOffset = circumference * (1 - secondsPercent);
+            document.getElementById('seconds-circle').style.strokeDashoffset = secondsOffset;
+        }
+        
+        // به‌روزرسانی شمارنده هر ثانیه
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
